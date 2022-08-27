@@ -4,6 +4,95 @@
   
     
     <entry>
+      <title>网络配置以及系统管理操作</title>
+      <link href="/2022/08/27/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C/"/>
+      <url>/2022/08/27/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-修改静态IP地址"><a href="#1-修改静态IP地址" class="headerlink" title="1.修改静态IP地址"></a>1.修改静态IP地址</h2><p>查看IP配置文件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure><p><img src="/2022/08/27/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C/1661588159742.png" alt="1661588159742"></p><p>修改完配置文件之后执行service network restart 重启网络然后就修改成功</p><h2 id="2-修改主机名称"><a href="#2-修改主机名称" class="headerlink" title="2.修改主机名称"></a>2.修改主机名称</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hostname</span><br></pre></td></tr></table></figure><p>修改完成之后需要重启电脑才能生效</p><h2 id="3-修改hosts映射文件"><a href="#3-修改hosts映射文件" class="headerlink" title="3.修改hosts映射文件"></a>3.修改hosts映射文件</h2><h3 id="3-1修改Linux的映射文件"><a href="#3-1修改Linux的映射文件" class="headerlink" title="3.1修改Linux的映射文件"></a>3.1修改Linux的映射文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure><p>添加如下内容即可</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.100 hadoop100</span><br><span class="line">192.168.2.101 hadoop101</span><br><span class="line">192.168.2.102 hadoop102</span><br><span class="line">192.168.2.103 hadoop103</span><br><span class="line">192.168.2.104 hadoop104</span><br><span class="line">192.168.2.105 hadoop105</span><br></pre></td></tr></table></figure><h3 id="3-2修改Windows的主机映射文件"><a href="#3-2修改Windows的主机映射文件" class="headerlink" title="3.2修改Windows的主机映射文件"></a>3.2修改Windows的主机映射文件</h3><p>（1）进入C:\Windows\System32\drivers\etc路径</p><p>（2）拷贝hosts文件到桌面</p><p>（3）打开桌面hosts文件并添加如下内容</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.100 hadoop100</span><br><span class="line">192.168.2.101 hadoop101</span><br><span class="line">192.168.2.102 hadoop102</span><br><span class="line">192.168.2.103 hadoop103</span><br><span class="line">192.168.2.104 hadoop104</span><br><span class="line">192.168.2.105 hadoop105</span><br></pre></td></tr></table></figure><p>（4）将桌面hosts文件覆盖C:\Windows\System32\drivers\etc路径hosts文件</p><h2 id="4-关闭防火墙"><a href="#4-关闭防火墙" class="headerlink" title="4.关闭防火墙"></a>4.关闭防火墙</h2><p>基本语法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start|stop|restart|status  服务名</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl disable service_name  （功能描述：关掉指定服务的自动启动）</span><br><span class="line">systemctl enable service_name   （功能描述：开启指定服务的自动启动）</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 静态IP </tag>
+            
+            <tag> 修改windos主机映射 </tag>
+            
+            <tag> 关闭防火墙 </tag>
+            
+            <tag> systemctl指令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vim编辑器</title>
+      <link href="/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+      <url>/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-VIM编辑器是什么"><a href="#1-VIM编辑器是什么" class="headerlink" title="1.VIM编辑器是什么"></a>1.VIM编辑器是什么</h2><p>VI是Unix操作系统和类Unix操作系统中最通用的文本编辑器。</p><p>VIM编辑器是从VI发展出来的一个性能更强大的文本编辑器。可以主动的以字体颜色辨别语法的正确性，方便程序设计。VIM与VI编辑器完全兼容。</p><h2 id="2-VIM编辑器的三种模式的切换"><a href="#2-VIM编辑器的三种模式的切换" class="headerlink" title="2.VIM编辑器的三种模式的切换"></a>2.VIM编辑器的三种模式的切换</h2><p><img src="/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/1661585762482.png" alt="1661585762482"></p><p>主要包括三种模式：一般模式、编辑模式、命令模式</p><p>一般模式就是进入一个文件的状态，然后我们可以按i、a、o进入编辑模式，在编辑模式下可以操作文件内容，然后使用ESC进入一般模式，一般模式下使用：可以进入命令模式，在命令模式下我们可以对文件进行保存更改等</p><h2 id="3-一般模式下常用命令"><a href="#3-一般模式下常用命令" class="headerlink" title="3.一般模式下常用命令"></a>3.一般模式下常用命令</h2><p>以vi打开一个档案就直接进入一般模式了（这是默认的模式）。在这个模式中，<br>你可以使用『上下左右』按键来移动光标，你可以使用『删除字符』或『删除整行』来处理档案内容， 也可以使用『复制、粘贴』来处理你的文件数据。</p><table><thead><tr><th>语法</th><th>功能描述</th></tr></thead><tbody><tr><td>yy</td><td>复制光标当前一行</td></tr><tr><td>y数字y</td><td>复制一段（从第几行到第几行）</td></tr><tr><td>p</td><td>箭头移动到目的行粘贴</td></tr><tr><td>u</td><td>撤销上一步</td></tr><tr><td>dd</td><td>删除光标当前行</td></tr><tr><td>d数字d</td><td>删除光标（含）后多少行</td></tr><tr><td>x</td><td>剪切一个字母，相当于del</td></tr><tr><td>X</td><td>剪切一个字母，相当于Backspace</td></tr><tr><td>yw</td><td>复制一个词</td></tr><tr><td>dw</td><td>删除一个词</td></tr><tr><td>shift+6（^）</td><td>移动到行头</td></tr><tr><td>shift+4 （$）</td><td>移动到行尾</td></tr><tr><td>1+shift+g</td><td>移动到页头，数字</td></tr><tr><td>shift+g</td><td>移动到页尾</td></tr><tr><td>数字+shift+g</td><td>移动到目标行</td></tr></tbody></table><h2 id="4-编辑模式"><a href="#4-编辑模式" class="headerlink" title="4.编辑模式"></a>4.编辑模式</h2><p>在一般模式中可以进行删除、复制、粘贴等的动作，但是却无法编辑文件内容的！要等到你按下『i, I, o, O, a, A』等任何一个字母之后才会进入编辑模式。</p><p>注意了！通常在Linux中，按下这些按键时，在画面的左下方会出现『INSERT或 REPLACE』的字样，此时才可以进行编辑。而如果要回到一般模式时， 则必须要按下『Esc』这个按键即可退出编辑模式。</p><h2 id="5-指令模式"><a href="#5-指令模式" class="headerlink" title="5.指令模式"></a>5.指令模式</h2><p>在一般模式当中，输入『 : &#x2F; ?』3个中的任何一个按钮，就可以将光标移动到最底下那一行。</p><p>在这个模式当中， 可以提供你『搜寻资料』的动作，而读取、存盘、大量取代字符、离开 vi 、显示行号等动作是在此模式中达成的！</p><table><thead><tr><th>命令</th><th>功能</th></tr></thead><tbody><tr><td>:w</td><td>保存</td></tr><tr><td>:q</td><td>退出</td></tr><tr><td>:!</td><td>强制执行</td></tr><tr><td>&#x2F;要查找的词</td><td>n 查找下一个，N 往上查找</td></tr><tr><td>:noh</td><td>取消高亮显示</td></tr><tr><td>:set nu</td><td>显示行号</td></tr><tr><td>:set nonu</td><td>关闭行号</td></tr><tr><td>:%s&#x2F;old&#x2F;new&#x2F;g</td><td>替换内容   &#x2F;g就是把找到的老的字符全部匹配成新的字符</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> VIM </tag>
+            
+            <tag> VI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux目录结构</title>
+      <link href="/2022/08/27/Linux/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/"/>
+      <url>/2022/08/27/Linux/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</url>
+      
+        <content type="html"><![CDATA[<p>在Linux中万物皆是文件</p><p>其目录结构如下图所示：</p><p><img src="/2022/08/27/Linux/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/1661584969351.png" alt="1661584969351"></p><p>其目录结构简介如下：</p><ul><li><p>&#x2F;bin</p><p>是Binary的缩写，这个目录下存放着最经常使用的命令</p></li><li><p>&#x2F;sbin</p><p>s 就是Super User的意思，这里存放的是系统管理员所使用的系统管理程序</p></li><li><p>&#x2F;home</p><p>存放普通用户的主目录，在Linux中每一个用户都有自己的一个目录，一般这个目录名就是此用户的账号名字</p></li><li><p>&#x2F;root</p><p>该目录就是系统管理员，也称为超级权限者的用户主目录</p></li><li><p>&#x2F;etc</p><p>所有的系统管理所需要的配置文件和子目录</p></li><li><p>&#x2F;usr</p><p>这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于Windows下的program files文件夹</p></li><li><p>&#x2F;boot</p><p>这里存放的是启动Linux的一些核心文件，包括一些连接文件以及镜像文件，自己的安装不要放在此目录下</p></li><li><p>&#x2F;mnt</p><p>系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将外部的存储挂载到&#x2F;mnt&#x2F;上，然后进入该目录就可以查看里面的内容了</p></li><li><p>&#x2F;opt</p><p>这是给主机额外安装软件所摆放的目录，比如你安装一个MySQL数据库就可以放到这个目录下。这个目录是一些大型软件的安装目录，或者是一些服务程序的安装目录 。</p></li><li><p>&#x2F;var</p><p>这个目录存放着不断扩充的东西，我们习惯把那些经常被修改的目录放到这个目录下面，包括各种文件日志</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> Linux中的文件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>连接池</title>
       <link href="/2022/08/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
       <url>/2022/08/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/%E8%BF%9E%E6%8E%A5%E6%B1%A0/</url>

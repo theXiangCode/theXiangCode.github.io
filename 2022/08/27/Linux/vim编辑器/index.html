@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Vim编辑器 | The Xiang Blog</title><meta name="keywords" content="Linux,VIM,VI"><meta name="author" content="Xiang Liu"><meta name="copyright" content="Xiang Liu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="介绍了Linux中VIM编辑器中的常用命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim编辑器">
+<meta property="og:url" content="http://example.com/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/index.html">
+<meta property="og:site_name" content="The Xiang Blog">
+<meta property="og:description" content="介绍了Linux中VIM编辑器中的常用命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/image/bg.jpg">
+<meta property="article:published_time" content="2022-08-27T07:35:03.590Z">
+<meta property="article:modified_time" content="2022-08-27T07:48:09.718Z">
+<meta property="article:author" content="Xiang Liu">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="VIM">
+<meta property="article:tag" content="VI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image/bg.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vim编辑器',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-08-27 15:48:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./image/title.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../image/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">The Xiang Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vim编辑器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-27T07:35:03.590Z" title="发表于 2022-08-27 15:35:03">2022-08-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-27T07:48:09.718Z" title="更新于 2022-08-27 15:48:09">2022-08-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">755</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vim编辑器"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-VIM编辑器是什么"><a href="#1-VIM编辑器是什么" class="headerlink" title="1.VIM编辑器是什么"></a>1.VIM编辑器是什么</h2><p>VI是Unix操作系统和类Unix操作系统中最通用的文本编辑器。</p>
+<p>VIM编辑器是从VI发展出来的一个性能更强大的文本编辑器。可以主动的以字体颜色辨别语法的正确性，方便程序设计。VIM与VI编辑器完全兼容。</p>
+<h2 id="2-VIM编辑器的三种模式的切换"><a href="#2-VIM编辑器的三种模式的切换" class="headerlink" title="2.VIM编辑器的三种模式的切换"></a>2.VIM编辑器的三种模式的切换</h2><p><img src="/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/1661585762482.png" alt="1661585762482"></p>
+<p>主要包括三种模式：一般模式、编辑模式、命令模式</p>
+<p>一般模式就是进入一个文件的状态，然后我们可以按i、a、o进入编辑模式，在编辑模式下可以操作文件内容，然后使用ESC进入一般模式，一般模式下使用：可以进入命令模式，在命令模式下我们可以对文件进行保存更改等</p>
+<h2 id="3-一般模式下常用命令"><a href="#3-一般模式下常用命令" class="headerlink" title="3.一般模式下常用命令"></a>3.一般模式下常用命令</h2><p>以vi打开一个档案就直接进入一般模式了（这是默认的模式）。在这个模式中，<br>你可以使用『上下左右』按键来移动光标，你可以使用『删除字符』或『删除整行』来处理档案内容， 也可以使用『复制、粘贴』来处理你的文件数据。</p>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>yy</td>
+<td>复制光标当前一行</td>
+</tr>
+<tr>
+<td>y数字y</td>
+<td>复制一段（从第几行到第几行）</td>
+</tr>
+<tr>
+<td>p</td>
+<td>箭头移动到目的行粘贴</td>
+</tr>
+<tr>
+<td>u</td>
+<td>撤销上一步</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除光标当前行</td>
+</tr>
+<tr>
+<td>d数字d</td>
+<td>删除光标（含）后多少行</td>
+</tr>
+<tr>
+<td>x</td>
+<td>剪切一个字母，相当于del</td>
+</tr>
+<tr>
+<td>X</td>
+<td>剪切一个字母，相当于Backspace</td>
+</tr>
+<tr>
+<td>yw</td>
+<td>复制一个词</td>
+</tr>
+<tr>
+<td>dw</td>
+<td>删除一个词</td>
+</tr>
+<tr>
+<td>shift+6（^）</td>
+<td>移动到行头</td>
+</tr>
+<tr>
+<td>shift+4 （$）</td>
+<td>移动到行尾</td>
+</tr>
+<tr>
+<td>1+shift+g</td>
+<td>移动到页头，数字</td>
+</tr>
+<tr>
+<td>shift+g</td>
+<td>移动到页尾</td>
+</tr>
+<tr>
+<td>数字+shift+g</td>
+<td>移动到目标行</td>
+</tr>
+</tbody></table>
+<h2 id="4-编辑模式"><a href="#4-编辑模式" class="headerlink" title="4.编辑模式"></a>4.编辑模式</h2><p>在一般模式中可以进行删除、复制、粘贴等的动作，但是却无法编辑文件内容的！要等到你按下『i, I, o, O, a, A』等任何一个字母之后才会进入编辑模式。</p>
+<p>注意了！通常在Linux中，按下这些按键时，在画面的左下方会出现『INSERT或 REPLACE』的字样，此时才可以进行编辑。而如果要回到一般模式时， 则必须要按下『Esc』这个按键即可退出编辑模式。</p>
+<h2 id="5-指令模式"><a href="#5-指令模式" class="headerlink" title="5.指令模式"></a>5.指令模式</h2><p>在一般模式当中，输入『 : &#x2F; ?』3个中的任何一个按钮，就可以将光标移动到最底下那一行。</p>
+<p>在这个模式当中， 可以提供你『搜寻资料』的动作，而读取、存盘、大量取代字符、离开 vi 、显示行号等动作是在此模式中达成的！</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:w</td>
+<td>保存</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>:!</td>
+<td>强制执行</td>
+</tr>
+<tr>
+<td>&#x2F;要查找的词</td>
+<td>n 查找下一个，N 往上查找</td>
+</tr>
+<tr>
+<td>:noh</td>
+<td>取消高亮显示</td>
+</tr>
+<tr>
+<td>:set nu</td>
+<td>显示行号</td>
+</tr>
+<tr>
+<td>:set nonu</td>
+<td>关闭行号</td>
+</tr>
+<tr>
+<td>:%s&#x2F;old&#x2F;new&#x2F;g</td>
+<td>替换内容   &#x2F;g就是把找到的老的字符全部匹配成新的字符</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Xiang Liu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/">http://example.com/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">The Xiang Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/VIM/">VIM</a><a class="post-meta__tags" href="/tags/VI/">VI</a></div><div class="post_share"><div class="social-share" data-image="/../image/bg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/08/27/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C/"><img class="prev-cover" src="/../image/bg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">网络配置以及系统管理操作</div></div></a></div><div class="next-post pull-right"><a href="/2022/08/27/Linux/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/"><img class="next-cover" src="/../image/bg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux目录结构</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/27/Linux/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="Linux目录结构"><img class="cover" src="/../image/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-27</div><div class="title">Linux目录结构</div></div></a></div><div><a href="/2022/08/27/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C/" title="网络配置以及系统管理操作"><img class="cover" src="/../image/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-27</div><div class="title">网络配置以及系统管理操作</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./image/title.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xiang Liu</div><div class="author-info__description">欢迎访问我的博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/theXiangCode" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://mail.qq.com/" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这几天心理颇不宁静</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-VIM%E7%BC%96%E8%BE%91%E5%99%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">1.VIM编辑器是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-VIM%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%87%E6%8D%A2"><span class="toc-text">2.VIM编辑器的三种模式的切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%80%E8%88%AC%E6%A8%A1%E5%BC%8F%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">3.一般模式下常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F"><span class="toc-text">4.编辑模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%8C%87%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">5.指令模式</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C/" title="网络配置以及系统管理操作"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络配置以及系统管理操作"/></a><div class="content"><a class="title" href="/2022/08/27/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C/" title="网络配置以及系统管理操作">网络配置以及系统管理操作</a><time datetime="2022-08-27T08:14:11.467Z" title="发表于 2022-08-27 16:14:11">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/" title="Vim编辑器"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vim编辑器"/></a><div class="content"><a class="title" href="/2022/08/27/Linux/vim%E7%BC%96%E8%BE%91%E5%99%A8/" title="Vim编辑器">Vim编辑器</a><time datetime="2022-08-27T07:35:03.590Z" title="发表于 2022-08-27 15:35:03">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/Linux/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="Linux目录结构"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux目录结构"/></a><div class="content"><a class="title" href="/2022/08/27/Linux/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="Linux目录结构">Linux目录结构</a><time datetime="2022-08-27T07:22:05.267Z" title="发表于 2022-08-27 15:22:05">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="连接池"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="连接池"/></a><div class="content"><a class="title" href="/2022/08/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="连接池">连接池</a><time datetime="2022-08-27T03:43:30.275Z" title="发表于 2022-08-27 11:43:30">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/JDBC/learingJDBC/" title="JDBC"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JDBC"/></a><div class="content"><a class="title" href="/2022/08/27/JDBC/learingJDBC/" title="JDBC">JDBC</a><time datetime="2022-08-27T02:01:00.153Z" title="发表于 2022-08-27 10:01:00">2022-08-27</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/../image/bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 <i style="color:#FF6A6A;animation: announ_animation 0.8s linear infinite;" class="fa fa-heartbeat"></i> Xiang Liu</div><div class="footer_custom_text">兽人永不为奴!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script src="https://gcore.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
