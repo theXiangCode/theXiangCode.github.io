@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/image/bg.jpg">
 <meta property="article:published_time" content="2022-09-02T01:50:33.472Z">
-<meta property="article:modified_time" content="2022-09-02T15:16:08.718Z">
+<meta property="article:modified_time" content="2022-09-02T15:16:48.337Z">
 <meta property="article:author" content="Xiang Liu">
 <meta property="article:tag" content="HBase">
 <meta property="article:tag" content="布隆过滤器">
@@ -59,7 +59,7 @@
   isHome: false,
   isHighlightShrink: true,
   isToc: true,
-  postUpdate: '2022-09-02 23:16:08'
+  postUpdate: '2022-09-02 23:16:48'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -148,10 +148,10 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./image/title.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">63</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../image/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">The Xiang Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HBase概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-02T01:50:33.472Z" title="发表于 2022-09-02 09:50:33">2022-09-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-02T15:16:08.718Z" title="更新于 2022-09-02 23:16:08">2022-09-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HBase/">HBase</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="HBase概述"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-Hbase简介"><a href="#1-Hbase简介" class="headerlink" title="1.Hbase简介"></a>1.Hbase简介</h2><h3 id="1-1-Hbase定义"><a href="#1-1-Hbase定义" class="headerlink" title="1.1 Hbase定义"></a>1.1 Hbase定义</h3><p>​	它是一种分布式、可扩展、支持海量数据存储的NoSQL数据库</p>
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./image/title.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">63</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../image/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">The Xiang Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HBase概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-02T01:50:33.472Z" title="发表于 2022-09-02 09:50:33">2022-09-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-02T15:16:48.337Z" title="更新于 2022-09-02 23:16:48">2022-09-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HBase/">HBase</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="HBase概述"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-Hbase简介"><a href="#1-Hbase简介" class="headerlink" title="1.Hbase简介"></a>1.Hbase简介</h2><h3 id="1-1-Hbase定义"><a href="#1-1-Hbase定义" class="headerlink" title="1.1 Hbase定义"></a>1.1 Hbase定义</h3><p>​	它是一种分布式、可扩展、支持海量数据存储的NoSQL数据库</p>
 <h3 id="1-2-HBase数据模型"><a href="#1-2-HBase数据模型" class="headerlink" title="1.2 HBase数据模型"></a>1.2 HBase数据模型</h3><p>​	逻辑上，HBase的数据模型同关系型数据库很类似，数据存储在一张表中，有行有列。但从HBase的底层物理存储结构（K-V）来看，HBase更像是一个multi-dimensional<br>map。</p>
-<h4 id="1-2-1-HBase逻辑结构"><a href="#1-2-1-HBase逻辑结构" class="headerlink" title="1.2.1 HBase逻辑结构"></a>1.2.1 HBase逻辑结构</h4><p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662083629185.png" alt="1662083629185"></p>
-<h4 id="1-2-2-HBase物理结构"><a href="#1-2-2-HBase物理结构" class="headerlink" title="1.2.2 HBase物理结构"></a>1.2.2 HBase物理结构</h4><p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662083681648.png" alt="1662083681648"></p>
+<h4 id="1-2-1-HBase逻辑结构"><a href="#1-2-1-HBase逻辑结构" class="headerlink" title="1.2.1 HBase逻辑结构"></a>1.2.1 HBase逻辑结构</h4><p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662083629185.png" alt="1662083629185"></p>
+<h4 id="1-2-2-HBase物理结构"><a href="#1-2-2-HBase物理结构" class="headerlink" title="1.2.2 HBase物理结构"></a>1.2.2 HBase物理结构</h4><p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662083681648.png" alt="1662083681648"></p>
 <h4 id="1-2-3-数据模型"><a href="#1-2-3-数据模型" class="headerlink" title="1.2.3 数据模型"></a>1.2.3 数据模型</h4><p><strong>1）Name Space</strong></p>
 <p>​	命名空间，类似于关系型数据库的database概念，每个命名空间下有多个表。HBase有两个自带的命名空间，分别是hbase和default，hbase中存放的是HBase内置的表，default表是用户默认使用的命名空间。</p>
 <p><strong>2）Table</strong></p>
@@ -164,7 +164,7 @@
 <p>​	用于标识数据的不同版本（version），每条数据写入时，系统会自动为其加上该字段，其值为写入HBase的时间。</p>
 <p><strong>6）Cell</strong></p>
 <p>​	由{rowkey, column Family：column Qualifier, time Stamp} 唯一确定的单元。cell中的数据全部是字节码形式存贮。</p>
-<h3 id="1-3-HBase基本架构"><a href="#1-3-HBase基本架构" class="headerlink" title="1.3 HBase基本架构"></a>1.3 HBase基本架构</h3><p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662085829198.png" alt="1662085829198"></p>
+<h3 id="1-3-HBase基本架构"><a href="#1-3-HBase基本架构" class="headerlink" title="1.3 HBase基本架构"></a>1.3 HBase基本架构</h3><p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662085829198.png" alt="1662085829198"></p>
 <p><strong>架构角色：</strong></p>
 <p><strong>1）Region Server</strong></p>
 <p>​	Region Server为 Region的管理者，其实现类为HRegionServer，主要作用如下:</p>
@@ -254,7 +254,7 @@
 <p><strong>version 和 timestamp的联系</strong></p>
 <p>​	version我们可以建表的时候自己指定，粒度是针对于某一个列族而言，这个数字代表了我们会存储最近n次的数据，就好比某一个列族、一个列限定符确定的cell，我们对其进行修改，其实是会把之前的数据也保存下来的，这个是用timestamp来区分的，每次我们都会取timestamp最大的作为最新的数据，这个version就是我们会保存几次原始的数据，如果修改次数过多，超过了version的数字，我们就需要删除之前的数据。</p>
 <p>​	在HBase之中，我们都是使用的追加的操作，因此比较高效</p>
-<h2 id="3-RegionServer-基础架构"><a href="#3-RegionServer-基础架构" class="headerlink" title="3. RegionServer 基础架构"></a>3. RegionServer 基础架构</h2><p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662099311523.png" alt="1662099311523"></p>
+<h2 id="3-RegionServer-基础架构"><a href="#3-RegionServer-基础架构" class="headerlink" title="3. RegionServer 基础架构"></a>3. RegionServer 基础架构</h2><p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662099311523.png" alt="1662099311523"></p>
 <p><strong>1）StoreFile</strong></p>
 <p>​	保存实际数据的物理文件，StoreFile以Hfile的形式存储在HDFS上。每个Store会有一个或多个StoreFile（HFile），数据在每个StoreFile中都是有序的。其中Store是存放的每一个列族的数据 ，HFile是HBase实现的文件格式，其中文件是由多个64KB大小的block组成的。</p>
 <p><strong>2）MemStore</strong></p>
@@ -264,11 +264,11 @@
 <p><strong>4）BlockCache</strong></p>
 <p>​	读缓存，每次查询出的数据会缓存在BlockCache中，方便下次查询。最大限制是HBase内存的40% </p>
 <h2 id="4-HBase数据写流程"><a href="#4-HBase数据写流程" class="headerlink" title="4. HBase数据写流程"></a>4. HBase数据写流程</h2><p>​	Hbase会默认存在一个名为Hbase的namespace，里面有个meta的表格，其中存放着元数据信息，而某一个client写数据的时候，需要获取到这个元数据信息，才能去写数据，这个meta到底在哪一个regionserver维护？需要client去zookeeper中去寻找。</p>
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662126233372.png" alt="1662126233372"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662126233372.png" alt="1662126233372"></p>
 <p> meta表格信息如下：</p>
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662126326550.png" alt="1662126326550"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662126326550.png" alt="1662126326550"></p>
 <p>​	 client可以从meta表格中获取哪一个表格是由哪一个regionserver所维护的，因此就可以向这个表格增加数据</p>
-<p> <img src="/Hbase%E6%A6%82%E5%BF%B5/1662126465194.png" alt="1662126465194"></p>
+<p> <img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662126465194.png" alt="1662126465194"></p>
 <ol>
 <li>首先client会去zookeeper请求存放meta表格的regionserver</li>
 <li>访问对应的regionserver，获取meta表格信息，根据自身所请求的表格和rowkey，确定目标数据位于哪一个regionserver中的哪一个region。并且把该table中的region信息以及meta表位置信息缓存到meta cache之中，方便下次访问</li>
@@ -278,7 +278,7 @@
 <li>向客户端发送ack</li>
 <li>等达到memstore的刷写机制之后，把数据刷写到HFile中去。</li>
 </ol>
-<h2 id="5-Memstore刷写操作"><a href="#5-Memstore刷写操作" class="headerlink" title="5. Memstore刷写操作"></a>5. Memstore刷写操作</h2><p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662126813770.png" alt="1662126813770"></p>
+<h2 id="5-Memstore刷写操作"><a href="#5-Memstore刷写操作" class="headerlink" title="5. Memstore刷写操作"></a>5. Memstore刷写操作</h2><p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662126813770.png" alt="1662126813770"></p>
 <ol>
 <li><p>当某个memstore的大小达到了<strong>hbase.hregion.memstore.flush.size（默认值128M）</strong>，其所在region的所有memstore都会刷写。 </p>
 <p>当memstore的大小达到了 <strong>hbase.hregion.memstore.flush.size</strong>（默认值128M）*<strong>hbase.hregion.memstore.block.multiplier</strong>（默认值4）时，会阻止继续往该memstore写数据。主要是由于可能写的速度非常快，可能上一次判断还是127MB，下一次判断就直接变为了512MB，由于写的速度很快导致的</p>
@@ -298,8 +298,8 @@
 <li><p>当WAL文件的数量超过<strong>hbase.regionserver.max.logs</strong>，region会按照时间顺序依次进行刷写，直到WAL文件数量减小到<strong>hbase.regionserver.max.logs</strong>以下（该属性名已经废弃，现无需手动设置，最大值为32）。</p>
 </li>
 </ol>
-<h2 id="6-Hbase读流程"><a href="#6-Hbase读流程" class="headerlink" title="6. Hbase读流程"></a>6. Hbase读流程</h2><p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662128183264.png" alt="1662128183264"></p>
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662128199205.png" alt="1662128199205"></p>
+<h2 id="6-Hbase读流程"><a href="#6-Hbase读流程" class="headerlink" title="6. Hbase读流程"></a>6. Hbase读流程</h2><p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662128183264.png" alt="1662128183264"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662128199205.png" alt="1662128199205"></p>
 <p><strong>读流程</strong></p>
 <p>1）Client先访问zookeeper，获取hbase:meta表位于哪个Region Server。</p>
 <p>2）访问对应的Region Server，获取hbase:meta表，根据读请求的namespace:table&#x2F;rowkey，查询出目标数据位于哪个Region Server中的哪个Region中。并将该table的region信息以及meta表 位置信息缓存在客户端的meta cache，方便下次访问。</p>
@@ -311,18 +311,18 @@
 <p>​	主要归功于时间范围、Rowkey范围、以及布隆过滤器等操作。</p>
 <p>​	 首先我们可以根据时间范围、Rowkey把很多的Hfile过滤掉。然后可以根据布隆过滤器来接着筛选Hfile文件</p>
 <p><strong>布隆过滤器原理</strong></p>
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662128821165.png" alt="1662128821165"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662128821165.png" alt="1662128821165"></p>
 <p>​	布隆过滤器可以让我们知道，这个文件并不存在某一条数据。</p>
 <p>​	文件会维护一个数组。然后当client插入数据的时候，会经过三个hash算法，算出来三个值，然后我们把这个数组对应的位置赋值为1，当用户读取数据的时候，也是会把该数据经过这三个hash算法，如果三个值都为1，那么这个数据就有可能存在这个文件中，如果其中有一个不是1，那么这个数据肯定不存在于这个文件当中。</p>
 <p>​	这样就可以避免去遍历这个文件中的所有数据来判断这个数据是否存在，因此极大提升了读取数据速度。</p>
 <h2 id="8-StoreFile的合并操作"><a href="#8-StoreFile的合并操作" class="headerlink" title="8. StoreFile的合并操作"></a>8. StoreFile的合并操作</h2><p>​	由于memstore每次刷写都会生成一个新的HFile，且同一个字段的不同版本（timestamp）和不同类型（Put&#x2F;Delete）有可能会分布在不同的HFile中，因此查询时需要遍历所有的HFile。为了减少HFile的个数，以及清理掉过期和删除的数据，会进行StoreFile Compaction。</p>
 <p>​	Compaction分为两种，分别是Minor Compaction和Major Compaction。Minor Compaction会将临近的若干个较小的HFile合并成一个较大的HFile，并清理掉部分过期和删除的数据。Major Compaction会将一个Store下的所有的HFile合并成一个大HFile，并且<strong>会清理掉所有过期和删除的数据</strong>。</p>
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662129173208.png" alt="1662129173208"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662129173208.png" alt="1662129173208"></p>
 <h2 id="9-Region-Split"><a href="#9-Region-Split" class="headerlink" title="9. Region Split"></a>9. Region Split</h2><p>​	默认情况下，每个Table起初只有一个Region，随着数据的不断写入，Region会自动进行拆分。刚拆分时，两个子Region都位于当前的Region Server，但处于负载均衡的考虑，HMaster有可能会将某个Region转移给其他的Region Server。</p>
 <p>​	Region Split时机：</p>
 <ol>
 <li><p>当1个region中的某个Store下所有StoreFile的总大小超过hbase.hregion.max.filesize，该Region就会进行拆分（0.94版本之前）。大小是10GB </p>
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662129413947.png" alt="1662129413947"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662129413947.png" alt="1662129413947"></p>
 </li>
 <li><p>当1个region中的某个Store下所有StoreFile的总大小超过Min(initialSize<em>R^3 ,hbase.hregion.max.filesize”)，该Region就会进行拆分。其中initialSize的默认值为2</em>hbase.hregion.memstore.flush.size，R为当前Region Server中属于该Table的Region个数（0.94版本之后）。</p>
 <p>具体的切分策略为：</p>
@@ -335,16 +335,16 @@
 <li><p>Hbase 2.0引入了新的split策略：如果当前RegionServer上该表只有一个Region，按照2 * hbase.hregion.memstore.flush.size分裂，否则按照hbase.hregion.max.filesize分裂。</p>
 </li>
 </ol>
-<p> <img src="/Hbase%E6%A6%82%E5%BF%B5/1662129619223.png" alt="1662129619223"></p>
+<p> <img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662129619223.png" alt="1662129619223"></p>
 <h2 id="10-Hbase优化"><a href="#10-Hbase优化" class="headerlink" title="10.Hbase优化"></a>10.Hbase优化</h2><h3 id="10-1-预分区"><a href="#10-1-预分区" class="headerlink" title="10.1 预分区"></a>10.1 预分区</h3><p>​	每一个region维护着startRow与endRowKey，如果加入的数据符合某个region维护的rowKey范围，则该数据交给这个region维护。那么依照这个原则，我们可以将数据所要投放的分区提前大致的规划好，以提高HBase性能。</p>
 <p><strong>1.手动设置预分区</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">hbase&gt; </span><span class="language-bash">create <span class="string">&#x27;staff1&#x27;</span>,<span class="string">&#x27;info&#x27;</span>,SPLITS =&gt; [<span class="string">&#x27;1000&#x27;</span>,<span class="string">&#x27;2000&#x27;</span>,<span class="string">&#x27;3000&#x27;</span>,<span class="string">&#x27;4000&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662130710167.png" alt="1662130710167"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662130710167.png" alt="1662130710167"></p>
 <p><strong>2.生成十六进制序列预分区</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create &#x27;staff2&#x27;,&#x27;info&#x27;,&#123;NUMREGIONS =&gt; 15, SPLITALGO =&gt; &#x27;HexStringSplit&#x27;&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662130740089.png" alt="1662130740089"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662130740089.png" alt="1662130740089"></p>
 <p><strong>3.按照文件中设置的规则预分区</strong></p>
 <p>创建splits.txt文件内容如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aaaa</span><br><span class="line">bbbb</span><br><span class="line">cccc</span><br><span class="line">dddd</span><br><span class="line">eeee</span><br></pre></td></tr></table></figure>
@@ -352,11 +352,11 @@
 <p>然后执行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create &#x27;staff3&#x27;,&#x27;info&#x27;,SPLITS_FILE =&gt; &#x27;splits.txt&#x27;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662130786078.png" alt="1662130786078"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662130786078.png" alt="1662130786078"></p>
 <p><strong>4.通过javaAPI来分区</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义算法，产生一系列Hash散列值存储在二维数组中</span></span><br><span class="line"><span class="type">byte</span>[][] splitKeys = 某个散列值函数</span><br><span class="line"><span class="comment">//创建HbaseAdmin实例</span></span><br><span class="line"><span class="type">HBaseAdmin</span> <span class="variable">hAdmin</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HBaseAdmin</span>(HbaseConfiguration.create());</span><br><span class="line"><span class="comment">//创建HTableDescriptor实例</span></span><br><span class="line"><span class="type">HTableDescriptor</span> <span class="variable">tableDesc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HTableDescriptor</span>(tableName);</span><br><span class="line"><span class="comment">//通过HTableDescriptor实例和散列值二维数组创建带有预分区的Hbase表</span></span><br><span class="line">hAdmin.createTable(tableDesc, splitKeys);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/Hbase%E6%A6%82%E5%BF%B5/1662130842605.png" alt="1662130842605"></p>
+<p><img src="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/1662130842605.png" alt="1662130842605"></p>
 <h3 id="10-2-rowkey设计"><a href="#10-2-rowkey设计" class="headerlink" title="10.2 rowkey设计"></a>10.2 rowkey设计</h3><p>​	一条数据的唯一标识就是rowkey，那么这条数据存储于哪个分区，取决于rowkey处于哪个一个预分区的区间内，设计rowkey的主要目的，就是让数据均匀的分布于所有的region中，在一定程度上防止数据倾斜。接下来我们就谈一谈rowkey常用的设计方案。</p>
 <p><strong>1.生成随机数、hash、散列值</strong></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">比如：</span><br><span class="line">原本rowKey为1001的，SHA1后变成：dd01903921ea24941c26a48f2cec24e0bb0e8cc7</span><br><span class="line">原本rowKey为3001的，SHA1后变成：49042c54de64a1e9bf0b33e00245660ef92dc7bd</span><br><span class="line">原本rowKey为5001的，SHA1后变成：7b61dec07e02c188790670af43e717f0f46e8913</span><br><span class="line">在做此操作之前，一般我们会选择从数据集中抽取样本，来决定什么样的rowKey来Hash后作为每个分区的临界值。</span><br></pre></td></tr></table></figure>
