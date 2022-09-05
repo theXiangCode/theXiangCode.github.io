@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Spark为什么要学</title>
+      <link href="/2022/09/05/Spark/spark_wordcount/"/>
+      <url>/2022/09/05/Spark/spark_wordcount/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-为什么要学习Spark"><a href="#1-为什么要学习Spark" class="headerlink" title="1. 为什么要学习Spark"></a>1. 为什么要学习Spark</h2><h3 id="1-1-Hadoop的缺点"><a href="#1-1-Hadoop的缺点" class="headerlink" title="1.1 Hadoop的缺点"></a>1.1 Hadoop的缺点</h3><p>主要是因为Hadoop有很多的缺点。有着很大的局限性</p><ol><li><p>NameNode是单点的，容易出现单点故障问题，制约了集群的发展</p></li><li><p>nameNode单点，受到硬件的制约，制约了集群的发展</p></li><li><p>MR速度太慢，主要是由于设计理念的问题</p><p>MR就是用于单一数据计算，当前数据挖掘和数据迭代计算不适用，而且每一次都落盘操作，都极大减少了性能</p></li><li><p>MR框架和Hadoop耦合性太强了，无法分离</p></li></ol><p>因此最终出现了很多的框架，Spark以及Flink、Hive等框架</p><h3 id="1-2-Spark的优点及介绍"><a href="#1-2-Spark的优点及介绍" class="headerlink" title="1.2 Spark的优点及介绍"></a>1.2 Spark的优点及介绍</h3><ol><li>Spark基于MR框架，但是优化了其中的计算过程，使用内存来代替计算结果</li><li>Spark基于Scala开发，更适合迭代计算和数据挖掘计算</li><li>Spark中计算模型非常丰富，hadoop中只有map和reduce，过于单调，很多东西很难去实现，但是spark中存在很多的算子（map、filter、groupBy等等）。</li></ol><h3 id="1-3-Spark-On-Yarn"><a href="#1-3-Spark-On-Yarn" class="headerlink" title="1.3 Spark On Yarn"></a>1.3 Spark On Yarn</h3><p><img src="/2022/09/05/Spark/spark_wordcount/1662390136020.png" alt="1662390136020"></p><h2 id="2-Spark-的wordcount案例实现"><a href="#2-Spark-的wordcount案例实现" class="headerlink" title="2. Spark 的wordcount案例实现"></a>2. Spark 的wordcount案例实现</h2><p><strong>简易版wordCount</strong></p><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xiang.bigdata.spark.wordcount</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.&#123;<span class="type">SparkConf</span>, <span class="type">SparkContext</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">spark01_wordcount</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="comment">//1. 获取Spark的连接（环境）</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setMaster(<span class="string">&quot;local&quot;</span>).setAppName(<span class="string">&quot;wordCount&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> lines = sc.textFile(<span class="string">&quot;data/data1.txt&quot;</span>)</span><br><span class="line">    lines</span><br><span class="line">      .flatMap(_.split(<span class="string">&quot; &quot;</span>))</span><br><span class="line">      .groupBy(word=&gt;word)</span><br><span class="line">      .mapValues(_.size)</span><br><span class="line">      .foreach(println(_))</span><br><span class="line"></span><br><span class="line">    sc.stop()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spark </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spark </tag>
+            
+            <tag> wordCont </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Scala概述</title>
       <link href="/2022/09/03/scala/scala%E7%AE%80%E4%BB%8B/"/>
       <url>/2022/09/03/scala/scala%E7%AE%80%E4%BB%8B/</url>
