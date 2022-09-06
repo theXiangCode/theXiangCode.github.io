@@ -1,0 +1,357 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Spark运行环境 | The Xiang Blog</title><meta name="keywords" content="Spark,yarn,standalone,local,windows,k8s"><meta name="author" content="Xiang Liu"><meta name="copyright" content="Xiang Liu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="介绍了Spark的几种运行环境">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark运行环境">
+<meta property="og:url" content="http://example.com/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="The Xiang Blog">
+<meta property="og:description" content="介绍了Spark的几种运行环境">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/image/bg.jpg">
+<meta property="article:published_time" content="2022-09-06T09:12:20.417Z">
+<meta property="article:modified_time" content="2022-09-06T10:22:37.113Z">
+<meta property="article:author" content="Xiang Liu">
+<meta property="article:tag" content="Spark">
+<meta property="article:tag" content="yarn">
+<meta property="article:tag" content="standalone">
+<meta property="article:tag" content="local">
+<meta property="article:tag" content="windows">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image/bg.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Spark运行环境',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-09-06 18:22:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./image/title.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">88</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../image/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">The Xiang Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Spark运行环境</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-06T09:12:20.417Z" title="发表于 2022-09-06 17:12:20">2022-09-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-06T10:22:37.113Z" title="更新于 2022-09-06 18:22:37">2022-09-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Spark/">Spark</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Spark运行环境"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-Local模式"><a href="#1-Local模式" class="headerlink" title="1. Local模式"></a>1. Local模式</h2><p>​	这里的local模式指的并不是我们在IDEA中的运行环境，在IDEA中本身并不存在spark环境，在每一次运行的时候创建，运行结束环境就释放了。这种环境只是用来开发测试使用，称为开发环境。</p>
+<h3 id="1-1-解压缩文件"><a href="#1-1-解压缩文件" class="headerlink" title="1.1 解压缩文件"></a>1.1 解压缩文件</h3><p>​	将spark-3.0.0-bin-hadoop3.2.tgz文件上传到Linux并解压缩，放置在指定位置，路径中不要包含中文或空格，课件后续如果涉及到解压缩操作，不再强调。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf spark-3.0.0-bin-hadoop3.2.tgz -C /opt/module</span><br><span class="line">cd /opt/module </span><br><span class="line">mv spark-3.0.0-bin-hadoop3.2 spark-local</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-Local环境"><a href="#1-2-Local环境" class="headerlink" title="1.2 Local环境"></a>1.2 Local环境</h3><p>进入解压目录后，使用如下指令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/spark-shell</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/1662455754090.png" alt="1662455754090"></p>
+<h3 id="1-3-提交应用"><a href="#1-3-提交应用" class="headerlink" title="1.3 提交应用"></a>1.3 提交应用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bin/spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master local[2] \</span><br><span class="line">./examples/jars/spark-examples_2.12-3.0.0.jar \</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–class表示要执行程序的主类，此处可以更换为咱们自己写的应用程序</li>
+<li>–master local[2] 部署模式，默认为本地模式，数字表示分配的虚拟CPU核数量</li>
+<li>spark-examples_2.12-3.0.0.jar 运行的应用类所在的jar包，实际使用时，可以设定为咱们自己打的jar包</li>
+<li>数字10表示程序的入口参数，用于设定当前应用的任务数量</li>
+</ul>
+<h2 id="2-Standalone模式"><a href="#2-Standalone模式" class="headerlink" title="2. Standalone模式"></a>2. Standalone模式</h2><p>​	local本地模式毕竟只是用来进行练习演示的，真实工作中还是要将应用提交到对应的集群中去执行，这里我们来看看只使用Spark自身节点运行的集群模式，也就是我们所谓的独立部署（Standalone）模式。Spark的Standalone模式体现了经典的master-slave模式。</p>
+<p>集群规划：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Linux1</th>
+<th>Linux2</th>
+<th>Linux3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spark</td>
+<td>Worker    Master</td>
+<td>Worker</td>
+<td>Worker</td>
+</tr>
+</tbody></table>
+<h3 id="2-1-解压缩文件"><a href="#2-1-解压缩文件" class="headerlink" title="2.1 解压缩文件"></a>2.1 解压缩文件</h3><p>​	将spark-3.0.0-bin-hadoop3.2.tgz文件上传到Linux并解压缩在指定位置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf spark-3.0.0-bin-hadoop3.2.tgz -C /opt/module</span><br><span class="line">cd /opt/module </span><br><span class="line">mv spark-3.0.0-bin-hadoop3.2 spark-standalone</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-修改配置文件"><a href="#2-2-修改配置文件" class="headerlink" title="2.2 修改配置文件"></a>2.2 修改配置文件</h3><ol>
+<li>进入解压缩后路径的conf目录，修改slaves.template文件名为slaves</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv slaves.template slaves</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改slaves文件，添加worker节点</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linux1</span><br><span class="line">linux2</span><br><span class="line">linux3</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改spark-env.sh.template文件名为spark-env.sh</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv spark-env.sh.template spark-env.sh</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>修改spark-env.sh文件，添加JAVA_HOME环境变量和集群对应的master节点</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_144</span><br><span class="line">SPARK_MASTER_HOST=linux1</span><br><span class="line">SPARK_MASTER_PORT=7077</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>r然后把spark传送到其它worker节点上</li>
+</ol>
+<h3 id="2-3-启动集群"><a href="#2-3-启动集群" class="headerlink" title="2.3 启动集群"></a>2.3 启动集群</h3><p>集群启动脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-all.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/1662456316655.png" alt="1662456316655"></p>
+<p><img src="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/1662456324286.png" alt="1662456324286"></p>
+<h3 id="2-4-提交应用"><a href="#2-4-提交应用" class="headerlink" title="2.4 提交应用"></a>2.4 提交应用</h3><p>提交应用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bin/spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master spark://hadoop102:7077 \</span><br><span class="line">./examples/jars/spark-examples_2.12-3.0.0.jar \</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>–class表示要执行程序的主类</li>
+<li>–master spark:&#x2F;&#x2F;linux1:7077 独立部署模式，连接到Spark集群</li>
+<li>spark-examples_2.12-3.0.0.jar 运行类所在的jar包</li>
+<li>数字10表示程序的入口参数，用于设定当前应用的任务数量</li>
+</ol>
+<p>执行任务时，会产生多个Java进程</p>
+<p><img src="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/1662456437706.png" alt="1662456437706"></p>
+<p>执行任务时，默认采用服务器集群节点的总核数，每个节点内存1024M</p>
+<p><img src="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/1662456456803.png" alt="1662456456803"></p>
+<h3 id="2-5-提交参数说明"><a href="#2-5-提交参数说明" class="headerlink" title="2.5 提交参数说明"></a>2.5 提交参数说明</h3><p>​	在提交应用中，一般会同时一些提交参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bin/spark-submit \</span><br><span class="line">--class &lt;main-class&gt;</span><br><span class="line">--master &lt;master-url&gt; \</span><br><span class="line">... # other options</span><br><span class="line">&lt;application-jar&gt; \</span><br><span class="line">[application-arguments]</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+<th>可选值举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–class</td>
+<td>Spark程序中包含主函数的类</td>
+<td></td>
+</tr>
+<tr>
+<td>–master</td>
+<td>Spark程序运行的模式(环境)</td>
+<td>模式：local[*]、spark:&#x2F;&#x2F;linux1:7077、   Yarn</td>
+</tr>
+<tr>
+<td>–executor-memory   1G</td>
+<td>指定每个executor可用内存为1G</td>
+<td></td>
+</tr>
+<tr>
+<td>–total-executor-cores   2</td>
+<td>指定所有executor使用的cpu核数为2个</td>
+<td></td>
+</tr>
+<tr>
+<td>–executor-cores</td>
+<td>指定每个executor使用的cpu核数</td>
+<td></td>
+</tr>
+<tr>
+<td>application-jar</td>
+<td>打包好的应用jar，包含依赖。这个URL在集群中全局可见。 比如hdfs:&#x2F;&#x2F; 共享存储系统，如果是file:&#x2F;&#x2F;   path，那么所有的节点的path都包含同样的jar</td>
+<td></td>
+</tr>
+<tr>
+<td>application-arguments</td>
+<td>传给main()方法的参数</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2-6-配置历史服务"><a href="#2-6-配置历史服务" class="headerlink" title="2.6 配置历史服务"></a>2.6 配置历史服务</h3><p>​	由于spark-shell停止掉后，集群监控linux1:4040页面就看不到历史任务的运行情况，所以开发时都配置历史服务器记录任务运行情况。</p>
+<ol>
+<li>修改spark-defaults.conf.template文件名为spark-defaults.conf</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv spark-defaults.conf.template spark-defaults.conf</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改spark-default.conf文件，配置日志存储路径</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spark.eventLog.enabled           true</span><br><span class="line">spark.eventLog.dir               hdfs://hadoop102:8020/directory</span><br></pre></td></tr></table></figure>
+
+<p>注意：需要启动hadoop集群，HDFS上的directory目录需要提前存在。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-dfs.sh</span><br><span class="line">hadoop fs -mkdir /directory</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改spark-env.sh文件, 添加日志配置</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export SPARK_HISTORY_OPTS=&quot;</span><br><span class="line">-Dspark.history.ui.port=18080 </span><br><span class="line">-Dspark.history.fs.logDirectory=hdfs://hadoop102:8020/directory </span><br><span class="line">-Dspark.history.retainedApplications=30&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>参数1含义：WEB UI访问的端口号为18080</p>
+</li>
+<li><p>参数2含义：指定历史服务器日志存储路径</p>
+</li>
+<li><p>参数3含义：指定保存Application历史记录的个数，如果超过这个值，旧的应用程序信息将被删除，这个是内存中的应用数，而不是页面上显示的应用数。</p>
+</li>
+</ul>
+<ol start="4">
+<li><p>分发配置文件</p>
+</li>
+<li><p>重新启动集群和历史服务</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-all.sh</span><br><span class="line">sbin/start-history-server.sh</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>重新执行任务</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bin/spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master spark://linux1:7077 \</span><br><span class="line">./examples/jars/spark-examples_2.12-3.0.0.jar \</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Yarn模式"><a href="#3-Yarn模式" class="headerlink" title="3. Yarn模式"></a>3. Yarn模式</h2><p>​	独立部署（Standalone）模式由Spark自身提供计算资源，无需其他框架提供资源。这种方式降低了和其他第三方资源框架的耦合性，独立性非常强。但是你也要记住，Spark主要是计算框架，而不是资源调度框架，所以本身提供的资源调度并不是它的强项，所以还是和其他专业的资源调度框架集成会更靠谱一些。所以接下来我们来学习在强大的Yarn环境下Spark是如何工作的（其实是因为在国内工作中，Yarn使用的非常多）。</p>
+<h3 id="3-1-解压缩文件"><a href="#3-1-解压缩文件" class="headerlink" title="3.1 解压缩文件"></a>3.1 解压缩文件</h3><p>​	将spark-3.0.0-bin-hadoop3.2.tgz文件上传到Linux并解压缩在指定位置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf spark-3.0.0-bin-hadoop3.2.tgz -C /opt/module</span><br><span class="line">cd /opt/module </span><br><span class="line">mv spark-3.0.0-bin-hadoop3.2 spark-standalone</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-修改配置文件"><a href="#3-2-修改配置文件" class="headerlink" title="3.2 修改配置文件"></a>3.2 修改配置文件</h3><ol>
+<li><p>修改hadoop配置文件&#x2F;opt&#x2F;module&#x2F;hadoop&#x2F;etc&#x2F;hadoop&#x2F;yarn-site.xml, 并分发</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--是否启动一个线程检查每个任务正使用的物理内存量，如果任务超出分配值，则直接将其杀掉，默认是true --&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">     &lt;name&gt;yarn.nodemanager.pmem-check-enabled&lt;/name&gt;</span><br><span class="line">     &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--是否启动一个线程检查每个任务正使用的虚拟内存量，如果任务超出分配值，则直接将其杀掉，默认是true --&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">     &lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;</span><br><span class="line">     &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改conf&#x2F;spark-env.sh，添加JAVA_HOME和YARN_CONF_DIR配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mv spark-env.sh.template spark-env.sh</span><br><span class="line">。。。</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_212</span><br><span class="line">YARN_CONF_DIR=/opt/module/hadoop-3.1.3/etc/hadoop</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="3-3-启动HDFS以及YARN集群"><a href="#3-3-启动HDFS以及YARN集群" class="headerlink" title="3.3 启动HDFS以及YARN集群"></a>3.3 启动HDFS以及YARN集群</h3><h3 id="3-4-提交应用"><a href="#3-4-提交应用" class="headerlink" title="3.4 提交应用"></a>3.4 提交应用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bin/spark-submit \</span><br><span class="line">--class org.apache.spark.examples.SparkPi \</span><br><span class="line">--master yarn \</span><br><span class="line">--deploy-mode cluster \</span><br><span class="line">./examples/jars/spark-examples_2.12-3.0.0.jar \</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<p>​	上述参数–deploy-mode 的参数值为cluster，这个值代表集群的意思</p>
+<p><img src="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/1662458813213.png" alt="1662458813213"></p>
+<h3 id="3-5-配置历史服务器"><a href="#3-5-配置历史服务器" class="headerlink" title="3.5 配置历史服务器"></a>3.5 配置历史服务器</h3><p>​	这部分配置历史服务器的步骤和standalone的步骤是一样的。</p>
+<h2 id="4-K8S以及Mesos模式"><a href="#4-K8S以及Mesos模式" class="headerlink" title="4. K8S以及Mesos模式"></a>4. K8S以及Mesos模式</h2><p>​	<strong>Yarn就是模仿的Mesos模式</strong></p>
+<p>​	Mesos是Apache下的开源分布式资源管理框架，它被称为是分布式系统的内核,在Twitter得到广泛使用,管理着Twitter超过30,0000台服务器上的应用部署，但是在国内，依然使用着传统的Hadoop大数据框架，所以国内使用Mesos框架的并不多，但是原理其实都差不多，这里我们就不做过多讲解了。</p>
+<p><img src="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/1662459085316.png" alt="1662459085316"></p>
+<p>​	容器化部署是目前业界很流行的一项技术，基于Docker镜像运行能够让用户更加方便地对应用进行管理和运维。容器管理工具中最为流行的就是Kubernetes（k8s），而Spark也在最近的版本中支持了k8s部署模式。这里我们也不做过多的讲解。给个链接大家自己感受一下：<a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/running-on-kubernetes.html">https://spark.apache.org/docs/latest/running-on-kubernetes.html</a></p>
+<p><img src="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/1662459137194.png" alt="1662459137194"></p>
+<h2 id="5-Windows模式"><a href="#5-Windows模式" class="headerlink" title="5. Windows模式"></a>5. Windows模式</h2><p>​	在同学们自己学习时，每次都需要启动虚拟机，启动集群，这是一个比较繁琐的过程，并且会占大量的系统资源，导致系统执行变慢，不仅仅影响学习效果，也影响学习进度，Spark非常暖心地提供了可以在windows系统下启动本地集群的方式，这样，在不使用虚拟机的情况下，也能学习Spark的基本使用</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Xiang Liu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/">http://example.com/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">The Xiang Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Spark/">Spark</a><a class="post-meta__tags" href="/tags/yarn/">yarn</a><a class="post-meta__tags" href="/tags/standalone/">standalone</a><a class="post-meta__tags" href="/tags/local/">local</a><a class="post-meta__tags" href="/tags/windows/">windows</a><a class="post-meta__tags" href="/tags/k8s/">k8s</a></div><div class="post_share"><div class="social-share" data-image="/../image/bg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/09/05/Spark/spark_wordcount/"><img class="next-cover" src="/../image/bg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spark为什么要学</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/09/05/Spark/spark_wordcount/" title="Spark为什么要学"><img class="cover" src="/../image/bg.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-05</div><div class="title">Spark为什么要学</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./image/title.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xiang Liu</div><div class="author-info__description">欢迎访问我的博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">88</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/theXiangCode" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://mail.qq.com/" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这几天心理颇不宁静</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Local%E6%A8%A1%E5%BC%8F"><span class="toc-text">1. Local模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E8%A7%A3%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="toc-text">1.1 解压缩文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Local%E7%8E%AF%E5%A2%83"><span class="toc-text">1.2 Local环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%8F%90%E4%BA%A4%E5%BA%94%E7%94%A8"><span class="toc-text">1.3 提交应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Standalone%E6%A8%A1%E5%BC%8F"><span class="toc-text">2. Standalone模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E8%A7%A3%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="toc-text">2.1 解压缩文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">2.2 修改配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="toc-text">2.3 启动集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%8F%90%E4%BA%A4%E5%BA%94%E7%94%A8"><span class="toc-text">2.4 提交应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E6%8F%90%E4%BA%A4%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-text">2.5 提交参数说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E9%85%8D%E7%BD%AE%E5%8E%86%E5%8F%B2%E6%9C%8D%E5%8A%A1"><span class="toc-text">2.6 配置历史服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Yarn%E6%A8%A1%E5%BC%8F"><span class="toc-text">3. Yarn模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%A7%A3%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="toc-text">3.1 解压缩文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">3.2 修改配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%90%AF%E5%8A%A8HDFS%E4%BB%A5%E5%8F%8AYARN%E9%9B%86%E7%BE%A4"><span class="toc-text">3.3 启动HDFS以及YARN集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%8F%90%E4%BA%A4%E5%BA%94%E7%94%A8"><span class="toc-text">3.4 提交应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E9%85%8D%E7%BD%AE%E5%8E%86%E5%8F%B2%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">3.5 配置历史服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-K8S%E4%BB%A5%E5%8F%8AMesos%E6%A8%A1%E5%BC%8F"><span class="toc-text">4. K8S以及Mesos模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Windows%E6%A8%A1%E5%BC%8F"><span class="toc-text">5. Windows模式</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" title="Spark运行环境"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spark运行环境"/></a><div class="content"><a class="title" href="/2022/09/06/Spark/Spark%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" title="Spark运行环境">Spark运行环境</a><time datetime="2022-09-06T09:12:20.417Z" title="发表于 2022-09-06 17:12:20">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/05/Spark/spark_wordcount/" title="Spark为什么要学"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spark为什么要学"/></a><div class="content"><a class="title" href="/2022/09/05/Spark/spark_wordcount/" title="Spark为什么要学">Spark为什么要学</a><time datetime="2022-09-05T14:41:18.493Z" title="发表于 2022-09-05 22:41:18">2022-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/03/scala/scala%E7%AE%80%E4%BB%8B/" title="Scala概述"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Scala概述"/></a><div class="content"><a class="title" href="/2022/09/03/scala/scala%E7%AE%80%E4%BB%8B/" title="Scala概述">Scala概述</a><time datetime="2022-09-03T01:41:36.267Z" title="发表于 2022-09-03 09:41:36">2022-09-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/" title="HBase概述"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HBase概述"/></a><div class="content"><a class="title" href="/2022/09/02/Hbase/Hbase%E6%A6%82%E5%BF%B5/" title="HBase概述">HBase概述</a><time datetime="2022-09-02T01:50:33.472Z" title="发表于 2022-09-02 09:50:33">2022-09-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/01/Kafka/Kafka%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Kafka面试题总结"><img src="/../image/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kafka面试题总结"/></a><div class="content"><a class="title" href="/2022/09/01/Kafka/Kafka%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Kafka面试题总结">Kafka面试题总结</a><time datetime="2022-09-01T11:52:47.258Z" title="发表于 2022-09-01 19:52:47">2022-09-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/../image/bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 <i style="color:#FF6A6A;animation: announ_animation 0.8s linear infinite;" class="fa fa-heartbeat"></i> Xiang Liu</div><div class="footer_custom_text">兽人永不为奴!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script src="https://gcore.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
