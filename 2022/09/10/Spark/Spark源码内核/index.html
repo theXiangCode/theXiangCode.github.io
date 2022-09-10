@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/image/bg.jpg">
 <meta property="article:published_time" content="2022-09-10T02:54:42.307Z">
-<meta property="article:modified_time" content="2022-09-10T12:11:48.893Z">
+<meta property="article:modified_time" content="2022-09-10T12:20:11.985Z">
 <meta property="article:author" content="Xiang Liu">
 <meta property="article:tag" content="Spark">
 <meta property="article:tag" content="NIO">
@@ -69,7 +69,7 @@
   isHome: false,
   isHighlightShrink: true,
   isToc: true,
-  postUpdate: '2022-09-10 20:11:48'
+  postUpdate: '2022-09-10 20:20:11'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -158,81 +158,61 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./image/title.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">129</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../image/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">The Xiang Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Spark内核</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-10T02:54:42.307Z" title="发表于 2022-09-10 10:54:42">2022-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-10T12:11:48.893Z" title="更新于 2022-09-10 20:11:48">2022-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Spark/">Spark</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>36分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Spark内核"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-Spark内核概述"><a href="#1-Spark内核概述" class="headerlink" title="1. Spark内核概述"></a>1. Spark内核概述</h2><h3 id="1-1-Spark核心组件"><a href="#1-1-Spark核心组件" class="headerlink" title="1.1 Spark核心组件"></a>1.1 Spark核心组件</h3><p><strong>Driver</strong></p>
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./image/title.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">129</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../image/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">The Xiang Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Spark内核</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-10T02:54:42.307Z" title="发表于 2022-09-10 10:54:42">2022-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-10T12:20:11.985Z" title="更新于 2022-09-10 20:20:11">2022-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Spark/">Spark</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>36分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Spark内核"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-Spark内核概述"><a href="#1-Spark内核概述" class="headerlink" title="1. Spark内核概述"></a>1. Spark内核概述</h2><h3 id="1-1-Spark核心组件"><a href="#1-1-Spark核心组件" class="headerlink" title="1.1 Spark核心组件"></a>1.1 Spark核心组件</h3><p><strong>Driver</strong></p>
 <p>​	Spark驱动器节点，用于执行Spark任务中的main方法，负责实际代码的执行工作。Driver在Spark作业执行时主要负责：</p>
 <ol>
-<li><pre><code>  将用户程序转化为作业（Job）；
-</code></pre>
+<li><p>将用户程序转化为作业（Job）；</p>
 </li>
-<li><pre><code>  在Executor之间调度任务（Task）；
-</code></pre>
+<li><p>在Executor之间调度任务（Task）；</p>
 </li>
-<li><pre><code>  跟踪Executor的执行情况；
-</code></pre>
+<li><p>跟踪Executor的执行情况；</p>
 </li>
-<li><pre><code>  通过UI展示查询运行情况；
-</code></pre>
+<li><p>通过UI展示查询运行情况；</p>
 </li>
 </ol>
 <p><strong>Executor</strong></p>
 <p>​	Spark Executor对象是负责在Spark作业中运行具体任务，任务彼此之间相互独立。Spark 应用启动时，ExecutorBackend节点被同时启动，并且始终伴随着整个Spark应用的生命周期而存在。如果有ExecutorBackend节点发生了故障或崩溃，Spark应用也可以继续执行，会将出错节点上的任务调度到其他Executor节点上继续运行。</p>
 <p>Executor有两个核心功能：</p>
 <ol>
-<li><pre><code>  负责运行组成Spark应用的任务，并将结果返回给驱动器（Driver）；
-</code></pre>
+<li><p>负责运行组成Spark应用的任务，并将结果返回给驱动器（Driver）；</p>
 </li>
-<li><pre><code>  它们通过自身的块管理器（Block Manager）为用户程序中要求缓存的 RDD 提供内存式存储。RDD是直接缓存在Executor进程内的，因此任务可以在运行时充分利用缓存数据加速运算。
-</code></pre>
+<li><p>它们通过自身的块管理器（Block Manager）为用户程序中要求缓存的 RDD 提供内存式存储。RDD是直接缓存在Executor进程内的，因此任务可以在运行时充分利用缓存数据加速运算。</p>
 </li>
 </ol>
 <h3 id="1-2-Spark通用运行流程概述"><a href="#1-2-Spark通用运行流程概述" class="headerlink" title="1.2 Spark通用运行流程概述"></a>1.2 Spark通用运行流程概述</h3><p><img src="/2022/09/10/Spark/Spark%E6%BA%90%E7%A0%81%E5%86%85%E6%A0%B8/1662781886696.png" alt="1662781886696"></p>
 <p>​	上图为Spark通用运行流程图，体现了基本的Spark应用程序在部署中的基本提交流程。</p>
 <p>这个流程是按照如下的核心步骤进行工作的：</p>
 <ol>
-<li><pre><code>  任务提交后，都会先启动Driver程序；
-</code></pre>
+<li><p>任务提交后，都会先启动Driver程序；</p>
 </li>
-<li><pre><code>  随后Driver向集群管理器注册应用程序；
-</code></pre>
+<li><p>随后Driver向集群管理器注册应用程序；</p>
 </li>
-<li><pre><code>  之后集群管理器根据此任务的配置文件分配Executor并启动；
-</code></pre>
+<li><p>之后集群管理器根据此任务的配置文件分配Executor并启动；</p>
 </li>
-<li><pre><code>  Driver开始执行main函数，Spark查询为懒执行，当执行到Action算子时开始反向推算，根据宽依赖进行Stage的划分，随后每一个Stage对应一个Taskset，Taskset中有多个Task，查找可用资源Executor进行调度；
-</code></pre>
+<li><p>Driver开始执行main函数，Spark查询为懒执行，当执行到Action算子时开始反向推算，根据宽依赖进行Stage的划分，随后每一个Stage对应一个Taskset，Taskset中有多个Task，查找可用资源Executor进行调度；</p>
 </li>
-<li><pre><code>  根据本地化原则，Task会被分发到指定的Executor去执行，在任务执行的过程中，Executor也会不断与Driver进行通信，报告任务运行情况。
-</code></pre>
+<li><p>根据本地化原则，Task会被分发到指定的Executor去执行，在任务执行的过程中，Executor也会不断与Driver进行通信，报告任务运行情况。</p>
 </li>
 </ol>
 <p>​	上述图中还存在一个问题，上述执行逻辑中，是资源满足之后才会执行main函数，其实main中需要准备一些配置等信息，才会去申请资源等信息，所以存在一些问题</p>
 <h2 id="2-Spark部署模式"><a href="#2-Spark部署模式" class="headerlink" title="2. Spark部署模式"></a>2. Spark部署模式</h2><h3 id="2-1-YARN-Cluster模式"><a href="#2-1-YARN-Cluster模式" class="headerlink" title="2.1 YARN Cluster模式"></a>2.1 YARN Cluster模式</h3><h4 id="2-1-Cluster模式"><a href="#2-1-Cluster模式" class="headerlink" title="2.1 Cluster模式"></a>2.1 Cluster模式</h4><ol>
-<li><pre><code>  执行脚本提交任务，实际是启动一个SparkSubmit的JVM进程；
-</code></pre>
+<li><p>执行脚本提交任务，实际是启动一个SparkSubmit的JVM进程；</p>
 </li>
-<li><pre><code>  SparkSubmit类中的main方法反射调用YarnClusterApplication的main方法；
-</code></pre>
+<li><p>SparkSubmit类中的main方法反射调用YarnClusterApplication的main方法；</p>
 </li>
-<li><pre><code>  YarnClusterApplication创建Yarn客户端，然后向Yarn服务器发送执行指令：bin/java ApplicationMaster；
-</code></pre>
+<li><p>YarnClusterApplication创建Yarn客户端，然后向Yarn服务器发送执行指令：bin&#x2F;java ApplicationMaster；</p>
 </li>
-<li><pre><code>  Yarn框架收到指令后会在指定的NM中启动ApplicationMaster；
-</code></pre>
+<li><p>Yarn框架收到指令后会在指定的NM中启动ApplicationMaster；</p>
 </li>
-<li><pre><code>  ApplicationMaster启动Driver线程，执行用户的作业；
-</code></pre>
+<li><p>ApplicationMaster启动Driver线程，执行用户的作业；</p>
 </li>
-<li><pre><code>  AM向RM注册，申请资源；
-</code></pre>
+<li><p>AM向RM注册，申请资源；</p>
 </li>
-<li><pre><code>  获取资源后AM向NM发送指令：bin/java YarnCoarseGrainedExecutorBackend；
-</code></pre>
+<li><p>获取资源后AM向NM发送指令：bin&#x2F;java YarnCoarseGrainedExecutorBackend；</p>
 </li>
-<li><pre><code>  CoarseGrainedExecutorBackend进程会接收消息，跟Driver通信，注册已经启动的Executor；然后启动计算对象Executor等待接收任务
-</code></pre>
+<li><p>CoarseGrainedExecutorBackend进程会接收消息，跟Driver通信，注册已经启动的Executor；然后启动计算对象Executor等待接收任务</p>
 </li>
-<li><pre><code>  Driver线程继续执行完成作业的调度和任务的执行。
-</code></pre>
+<li><p>Driver线程继续执行完成作业的调度和任务的执行。</p>
 </li>
 <li><p>Driver分配任务并监控任务的执行。</p>
 </li>
@@ -242,36 +222,27 @@
 <h4 id="2-2-Client模式"><a href="#2-2-Client模式" class="headerlink" title="2.2 Client模式"></a>2.2 Client模式</h4><p>​	该模式尽量不要使用，他和Cluster的区别在于Driver端存在的位置，Client模式会把Driver放到本机中去执行，Cluster会再某一个NodeManager之中选择创建ApplicationMaster，然后再APPMaster之中创建一个线程，就是Driver，但是client的电脑性能较低，集群中的executor都需要与Dirver进行交互，这样有极大的可能造成雪崩。因此我们一般使用Cluster模式。</p>
 <p>​	</p>
 <ol>
-<li><pre><code>  执行脚本提交任务，实际是启动一个SparkSubmit的JVM进程；
-</code></pre>
+<li><p>执行脚本提交任务，实际是启动一个SparkSubmit的JVM进程；</p>
 </li>
-<li><pre><code>  SparkSubmit类中的main方法反射调用用户代码的main方法；
-</code></pre>
+<li><p>SparkSubmit类中的main方法反射调用用户代码的main方法；</p>
 </li>
-<li><pre><code>  启动Driver线程，执行用户的作业，并创建ScheduleBackend；
-</code></pre>
+<li><p>启动Driver线程，执行用户的作业，并创建ScheduleBackend；</p>
 </li>
-<li><pre><code>  YarnClientSchedulerBackend向RM发送指令：bin/java ExecutorLauncher；
-</code></pre>
+<li><p>YarnClientSchedulerBackend向RM发送指令：bin&#x2F;java ExecutorLauncher；</p>
 </li>
-<li><pre><code>  Yarn框架收到指令后会在指定的NM中启动ExecutorLauncher（实际上还是调用ApplicationMaster的main方法）；
-</code></pre>
+<li><p>Yarn框架收到指令后会在指定的NM中启动ExecutorLauncher（实际上还是调用ApplicationMaster的main方法）；</p>
 </li>
 </ol>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">ExecutorLauncher</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="type">ApplicationMaster</span>.main(args)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="6">
-<li><pre><code>  AM向RM注册，申请资源；
-</code></pre>
+<li><p>AM向RM注册，申请资源；</p>
 </li>
-<li><pre><code>  获取资源后AM向NM发送指令：bin/java CoarseGrainedExecutorBackend；
-</code></pre>
+<li><p>获取资源后AM向NM发送指令：bin&#x2F;java CoarseGrainedExecutorBackend；</p>
 </li>
-<li><pre><code>  CoarseGrainedExecutorBackend进程会接收消息，跟Driver通信，注册已经启动的Executor；然后启动计算对象Executor等待接收任务
-</code></pre>
+<li><p>CoarseGrainedExecutorBackend进程会接收消息，跟Driver通信，注册已经启动的Executor；然后启动计算对象Executor等待接收任务</p>
 </li>
-<li><pre><code>  Driver分配任务并监控任务的执行。
-</code></pre>
+<li><p>Driver分配任务并监控任务的执行。</p>
 </li>
 </ol>
 <p><strong>注意：SparkSubmit、ApplicationMaster和YarnCoarseGrainedExecutorBackend是独立的进程；Executor和Driver是对象。</strong></p>
@@ -330,14 +301,11 @@
 <p>​	当ResourceManager向ApplicationMaster返回Container资源时，ApplicationMaster就尝试在对应的Container上启动Executor进程，Executor进程起来后，会向Driver反向注册，注册成功后保持与Driver的心跳，同时等待Driver分发任务，当分发的任务执行完毕后，将任务状态上报给Driver。	</p>
 <h3 id="4-1-Spark调度概述"><a href="#4-1-Spark调度概述" class="headerlink" title="4.1 Spark调度概述"></a>4.1 Spark调度概述</h3><p>当Driver起来后，Driver则会根据用户程序逻辑准备任务，并根据Executor资源情况逐步分发任务。在详细阐述任务调度前，首先说明下Spark里的几个概念。一个Spark应用程序包括Job、Stage以及Task三个概念：</p>
 <ol>
-<li><pre><code>  Job是以Action方法为界，遇到一个Action方法则触发一个Job；
-</code></pre>
+<li><p>Job是以Action方法为界，遇到一个Action方法则触发一个Job；</p>
 </li>
-<li><pre><code>  Stage是Job的子集，以RDD宽依赖(即Shuffle)为界，遇到Shuffle做一次划分；
-</code></pre>
+<li><p>Stage是Job的子集，以RDD宽依赖(即Shuffle)为界，遇到Shuffle做一次划分；</p>
 </li>
-<li><pre><code>  Task是Stage的子集，以并行度(分区数)来衡量，分区数是多少，则有多少个task。
-</code></pre>
+<li><p>Task是Stage的子集，以并行度(分区数)来衡量，分区数是多少，则有多少个task。</p>
 </li>
 </ol>
 <p>Spark的任务调度总体来说分两路进行，一路是Stage级的调度，一路是Task级的调度，总体调度流程如下图所示：</p>
@@ -354,11 +322,9 @@
 <h3 id="4-2-Stage调度"><a href="#4-2-Stage调度" class="headerlink" title="4.2 Stage调度"></a>4.2 Stage调度</h3><p>​	Spark的任务调度是从DAG切割开始，主要是由DAGScheduler来完成。当遇到一个Action操作后就会触发一个Job的计算，并交给DAGScheduler来提交，下图是涉及到Job提交的相关方法调用流程图。</p>
 <p><img src="/2022/09/10/Spark/Spark%E6%BA%90%E7%A0%81%E5%86%85%E6%A0%B8/1662796215480.png" alt="1662796215480"></p>
 <ol>
-<li><pre><code>  Job由最终的RDD和Action方法封装而成；
-</code></pre>
+<li><p>Job由最终的RDD和Action方法封装而成；</p>
 </li>
-<li><pre><code>  SparkContext将Job交给DAGScheduler提交，它会根据RDD的血缘关系构成的DAG进行切分，将一个Job划分为若干Stages，具体划分策略是，由最终的RDD不断通过依赖回溯判断父依赖是否是宽依赖，即以Shuffle为界，划分Stage，窄依赖的RDD之间被划分到同一个Stage中，可以进行pipeline式的计算。划分的Stages分两类，一类叫做ResultStage，为DAG最下游的Stage，由Action方法决定，另一类叫做ShuffleMapStage，为下游Stage准备数据，下面看一个简单的例子WordCount。
-</code></pre>
+<li><p>SparkContext将Job交给DAGScheduler提交，它会根据RDD的血缘关系构成的DAG进行切分，将一个Job划分为若干Stages，具体划分策略是，由最终的RDD不断通过依赖回溯判断父依赖是否是宽依赖，即以Shuffle为界，划分Stage，窄依赖的RDD之间被划分到同一个Stage中，可以进行pipeline式的计算。划分的Stages分两类，一类叫做ResultStage，为DAG最下游的Stage，由Action方法决定，另一类叫做ShuffleMapStage，为下游Stage准备数据，下面看一个简单的例子WordCount。</p>
 </li>
 </ol>
 <p><img src="/2022/09/10/Spark/Spark%E6%BA%90%E7%A0%81%E5%86%85%E6%A0%B8/1662796229819.png" alt="1662796229819"></p>
@@ -373,16 +339,12 @@
 <p>​	上图中，将TaskSetManager加入rootPool调度池中之后，调用SchedulerBackend的riviveOffers方法给driverEndpoint发送ReviveOffer消息；driverEndpoint收到ReviveOffer消息后调用makeOffers方法，过滤出活跃状态的Executor（这些Executor都是任务启动时反向注册到Driver的Executor），然后将Executor封装成WorkerOffer对象；准备好计算资源（WorkerOffer）后，taskScheduler基于这些资源调用resourceOffer在Executor上分配task。</p>
 <h4 id="4-3-1-调度策略"><a href="#4-3-1-调度策略" class="headerlink" title="4.3.1 调度策略"></a>4.3.1 调度策略</h4><p>TaskScheduler支持两种调度策略，一种是FIFO，也是默认的调度策略，另一种是FAIR。在TaskScheduler初始化过程中会实例化rootPool，表示树的根节点，是Pool类型。</p>
 <ol>
-<li><pre><code>  FIFO调度策略
-</code></pre>
-</li>
+<li>FIFO调度策略</li>
 </ol>
 <p>如果是采用FIFO调度策略，则直接简单地将TaskSetManager按照先来先到的方式入队，出队时直接拿出最先进队的TaskSetManager，其树结构如下图所示，TaskSetManager保存在一个FIFO队列中。</p>
 <p><img src="/2022/09/10/Spark/Spark%E6%BA%90%E7%A0%81%E5%86%85%E6%A0%B8/1662796335654.png" alt="1662796335654"></p>
 <ol start="2">
-<li><pre><code>  FAIR调度策略
-</code></pre>
-</li>
+<li>FAIR调度策略</li>
 </ol>
 <p>FAIR调度策略的树结构如下图所示：</p>
 <p><img src="/2022/09/10/Spark/Spark%E6%BA%90%E7%A0%81%E5%86%85%E6%A0%B8/1662796352169.png" alt="1662796352169"></p>
@@ -391,17 +353,13 @@
 <p>​	排序过程的比较是基于Fair-share来比较的，每个要排序的对象包含三个属性: runningTasks值（正在运行的Task数）、minShare值、weight值，比较时会综合考量runningTasks值，minShare值以及weight值。</p>
 <p>​	注意，minShare、weight的值均在公平调度配置文件fairscheduler.xml中被指定，调度池在构建阶段会读取此文件的相关配置。</p>
 <ol>
-<li><pre><code>  如果A对象的runningTasks大于它的minShare，B对象的runningTasks小于它的minShare，那么B排在A前面；（runningTasks比minShare小的先执行）
-</code></pre>
+<li><p>如果A对象的runningTasks大于它的minShare，B对象的runningTasks小于它的minShare，那么B排在A前面；（runningTasks比minShare小的先执行）</p>
 </li>
-<li><pre><code>  如果A、B对象的runningTasks都小于它们的minShare，那么就比较runningTasks与minShare的比值（minShare使用率），谁小谁排前面；（minShare使用率低的先执行）
-</code></pre>
+<li><p>如果A、B对象的runningTasks都小于它们的minShare，那么就比较runningTasks与minShare的比值（minShare使用率），谁小谁排前面；（minShare使用率低的先执行）</p>
 </li>
-<li><pre><code>  如果A、B对象的runningTasks都大于它们的minShare，那么就比较runningTasks与weight的比值（权重使用率），谁小谁排前面。（权重使用率低的先执行）
-</code></pre>
+<li><p>如果A、B对象的runningTasks都大于它们的minShare，那么就比较runningTasks与weight的比值（权重使用率），谁小谁排前面。（权重使用率低的先执行）</p>
 </li>
-<li><pre><code>  如果上述比较均相等，则比较名字。
-</code></pre>
+<li><p>如果上述比较均相等，则比较名字。</p>
 </li>
 </ol>
 <p>​	整体上来说就是通过minShare和weight这两个参数控制比较过程，可以做到让minShare使用率和权重使用率少（实际运行task比例较少）的先运行。</p>
@@ -459,8 +417,8 @@
 <p>​	最后在每个Task中，将所有的临时文件合并，这就是merge过程，此过程将所有临时文件读取出来，一次写入到最终文件。意味着一个Task的所有数据都在这一个文件中。同时单独写一份索引文件，标识下游各个Task的数据在文件中的索引，start offset和end offset。</p>
 <p><img src="/2022/09/10/Spark/Spark%E6%BA%90%E7%A0%81%E5%86%85%E6%A0%B8/1662797475727.png" alt="1662797475727"></p>
 <h4 id="5-3-2-bypass-SortShuffle"><a href="#5-3-2-bypass-SortShuffle" class="headerlink" title="5.3.2 bypass SortShuffle"></a>5.3.2 bypass SortShuffle</h4><p>​	bypass运行机制的触发条件如下：</p>
-<p><strong>1)       shuffle reduce task数量小于spark.shuffle.sort.bypassMergeThreshold参数的值，默认为200。</strong></p>
-<p><strong>2)       不是预聚合类的shuffle算子（比如reduceByKey）。</strong></p>
+<p><strong>1. shuffle reduce task数量小于spark.shuffle.sort.bypassMergeThreshold参数的值，默认为200。</strong></p>
+<p><strong>2. 不是预聚合类的shuffle算子（比如reduceByKey）。</strong></p>
 <p>​	此时task会为每个reduce端的task都创建一个临时磁盘文件，并将数据按key进行hash然后根据key的hash值，将key写入对应的磁盘文件之中。当然，写入磁盘文件时也是先写入内存缓冲，缓冲写满之后再溢写到磁盘文件的。最后，同样会将所有临时磁盘文件都合并成一个磁盘文件，并创建一个单独的索引文件。</p>
 <p>​	该过程的磁盘写机制其实跟未经优化的HashShuffleManager是一模一样的，因为都要创建数量惊人的磁盘文件，只是在最后会做一个磁盘文件的合并而已。因此少量的最终磁盘文件，也让该机制相对未经优化的HashShuffleManager来说，shuffle read的性能会更好。</p>
 <p>​	而该机制与普通SortShuffleManager运行机制的不同在于：不会进行排序。也就是说，启用该机制的最大好处在于，shuffle write过程中，不需要进行数据的排序操作，也就节省掉了这部分的性能开销。</p>
@@ -507,17 +465,13 @@
 <p><img src="/2022/09/10/Spark/Spark%E6%BA%90%E7%A0%81%E5%86%85%E6%A0%B8/1662811288550.png" alt="1662811288550"></p>
 <p>其中最重要的优化在于动态占用机制，其规则如下：</p>
 <ol>
-<li><pre><code>  设定基本的存储内存和执行内存区域（spark.storage.storageFraction参数），该设定确定了双方各自拥有的空间的范围；
-</code></pre>
+<li><p>设定基本的存储内存和执行内存区域（spark.storage.storageFraction参数），该设定确定了双方各自拥有的空间的范围；</p>
 </li>
-<li><pre><code>  双方的空间都不足时，则存储到硬盘；若己方空间不足而对方空余时，可借用对方的空间;（存储空间不足是指不足以放下一个完整的Block）
-</code></pre>
+<li><p>双方的空间都不足时，则存储到硬盘；若己方空间不足而对方空余时，可借用对方的空间;（存储空间不足是指不足以放下一个完整的Block）</p>
 </li>
-<li><pre><code>  执行内存的空间被对方占用后，可让对方将占用的部分转存到硬盘，然后”归还”借用的空间；
-</code></pre>
+<li><p>执行内存的空间被对方占用后，可让对方将占用的部分转存到硬盘，然后”归还”借用的空间；</p>
 </li>
-<li><pre><code>  存储内存的空间被对方占用后，无法让对方”归还”，因为需要考虑 Shuffle过程中的很多因素，实现起来较为复杂。
-</code></pre>
+<li><p>存储内存的空间被对方占用后，无法让对方”归还”，因为需要考虑 Shuffle过程中的很多因素，实现起来较为复杂。</p>
 </li>
 </ol>
 <p>统一内存管理的动态占用机制如图所示：</p>
